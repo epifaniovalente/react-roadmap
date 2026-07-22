@@ -8,10 +8,7 @@ export default function FormularioAvancado() {
       .string()
       .min(3, { message: 'O nome deve ter no mínimo 3 caracteres' }),
     email: z.string().email({ message: 'Email inválido' }),
-    idade: z
-      .number()
-      .min(18, { message: 'Você deve ter no mínimo 18 anos' })
-      .max(65, { message: 'Você deve ter no máximo 65 anos' }),
+    idade: z.number().min(18, { message: 'Você deve ter no mínimo 18 anos' }).max(65, { message: 'Você deve ter no máximo 65 anos' }),
     senha: z
       .string()
       .min(6, { message: 'A senha deve ter no mínimo 6 caracteres' })
@@ -72,11 +69,11 @@ export default function FormularioAvancado() {
             Idade
           </label>
           <input
-            {...register('idade')}
+            {...register('idade', { valueAsNumber: true })}
             type="number"
             name="idade"
             id="idade"
-            className="border border-gray-300 rounded p-2 outline-none appearance-none"
+            className="border border-gray-300 rounded p-2 outline-none"
           />
           <span className="text-red-500 text-xs">{errors.idade?.message}</span>
         </div>

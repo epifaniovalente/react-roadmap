@@ -1,6 +1,7 @@
 import { useState } from "react"
 import useAuthStore from "../store/useAuthStore"
 import { useNavigate } from "react-router-dom"
+import Authentication from "../auth/Authentication"
 
 
 
@@ -15,18 +16,20 @@ export function Login() {
         e.preventDefault();
         if(userName.trim()){
             login({nome: userName})
-            // navegar("/")
+            navegar("/")
         }
     }
 
     return (
         <section>
-            <input type="text" name="nome" id="nome" value={userName} onChange={(e) => setUserName(e.target.value)} style={{ padding: "10px", fontSize: "18px" }} />
+            <input type="text" name="nome" id="nome" value={userName} onChange={(e) => setUserName(e.target.value)} />
             <br /><br />
             <button type="button" onClick={handleLogin} style={{ padding: "10px 20px", fontSize: "18px" }}>
                 Entrar
             </button>
             {usuario}
+
+            <Authentication/>
         </section>
     )
 }
